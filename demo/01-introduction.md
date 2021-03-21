@@ -1,22 +1,22 @@
 # Introduction to Mongo
 
 Check databases
-```
+```js
 show dbs
 ```
 
 Switch to new database
-```
+```js
 use demo
 ```
 
 Check collections
-```
+```js
 show collections
 ```
 
 Insert documents
-```
+```js
 db.persons.insertMany([
 	{ name: { first: "John", last: "Doe" }, birthDate: new Date("1988-10-10"), likes: ["sports", "food"] },
 	{ name: { first: "Jane", last: "Doe" }, birthDate: new Date("1983-12-13"), likes: ["dogs"] },
@@ -25,12 +25,12 @@ db.persons.insertMany([
 ```
 
 Check collection content
-```
+```js
 db.persons.find({})
 ```
 
 Queries
-```
+```js
 db.persons.find({"name.last": "Doe"})
 
 db.persons.find({birthDate: { $gt: ISODate("1990-01-01")} })
@@ -39,11 +39,10 @@ db.persons.find({birthDate: { $gt: ISODate("1990-01-01")}, "name.last": "Doe" })
 db.persons.find({birthDate: { $lt: ISODate("1990-01-01")}, "name.last": "Doe" })
 
 db.persons.find({"likes": "sports"})
-
 ```
 
 Projections
-```
+```js
 db.persons.find({}, { name: 1, birthDate: 1})
 
 db.persons.find({}, { name: 1, birthDate: 1, _id: 0})
