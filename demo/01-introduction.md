@@ -19,7 +19,7 @@ Insert documents
 ```js
 db.persons.insertMany([
 	{ name: { first: "John", last: "Doe" }, birthDate: new Date("1988-10-10"), likes: ["sports", "food"] },
-	{ name: { first: "Jane", last: "Doe" }, birthDate: new Date("1983-12-13"), likes: ["dogs"] },
+	{ name: { first: "Jane", last: "Doe" }, birthDate: new Date("1991-12-13"), likes: ["dogs"] },
 	{ name: { first: "Mary", last: "Smith" }, birthDate: new Date("1996-04-21"), likes: ["sports"] }	
 ])
 ```
@@ -31,14 +31,12 @@ db.persons.find({})
 
 Queries
 ```js
+db.persons.find({birthDate: ISODate("1988-10-10") })
+
 db.persons.find({"name.last": "Doe"})
 
-db.persons.find({birthDate: { $gt: ISODate("1990-01-01")} })
-
-db.persons.find({birthDate: { $gt: ISODate("1990-01-01")}, "name.last": "Doe" })
-db.persons.find({birthDate: { $lt: ISODate("1990-01-01")}, "name.last": "Doe" })
-
 db.persons.find({"likes": "sports"})
+
 ```
 
 Projections
