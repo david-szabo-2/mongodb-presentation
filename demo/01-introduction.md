@@ -38,12 +38,3 @@ db.persons.find({"name.last": "Doe"})
 db.persons.find({"likes": "sports"})
 
 ```
-
-Projections
-```js
-db.persons.find({}, { name: 1, birthDate: 1})
-
-db.persons.find({}, { name: 1, birthDate: 1, _id: 0})
-
-db.persons.find({}, { birthDate: 0, _id: 0})
-```
