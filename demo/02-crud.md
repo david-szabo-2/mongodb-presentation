@@ -25,12 +25,18 @@ Check collection content
 ```js
 
 db.people.find({})
+```
 
+Query filters
+
+```js
 db.people.find({birthDate: ISODate("1988-10-10")})
 
 db.people.find({birthDate: { $lt: ISODate("1990-01-01")} })
 
 db.people.find({"name.last": "Doe", birthDate: { $lt: ISODate("1990-01-01")}})
+
+db.people.find( { $or: [ {"name.last": "Doe"}, {birthDate: { $lt: ISODate("1990-01-01") } } ] })
 ```
 
 Documents
