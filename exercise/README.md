@@ -7,7 +7,7 @@ Load data using mongoimport tool. Execute from commandline *not* mongo shell.
 mongoimport -d exercise postcodes.json
 ```
 
-Start mongo shell and check that the collection.
+Start mongo shell and check that import was successful.
 ```js
 use exercise
 
@@ -18,9 +18,9 @@ db.postcodes.findOne({})
 
 ## Exercises
 
-* Add the {"postal_code" : "38116", "place" : { "name" : "Graceland", "country" :"US", "state" : "Tennessee", "loc" : [ 19.0419, 47.5328 ] } } document to the collection
+* Add the `{"postal_code" : "38116", "place" : { "name" : "Graceland", "country" :"US", "state" : "Tennessee", "loc" : [ 19.0419, 47.5328 ] } }` document to the collection
 
-* Change the coordinates of the same document to [-90.02604930000001, 35.0476912]
+* Change the coordinates of the same document to `[-90.02604930000001, 35.0476912]`
 
 * What is the postal code of Graceland/Tennessee? Restrict the query to the postal code only, no other fields.
 
@@ -35,4 +35,4 @@ db.postcodes.findOne({})
 
 ## Help
 
-MongoDb reference: https://docs.mongodb.com/manual/reference/
+MongoDB reference: https://docs.mongodb.com/manual/reference/
