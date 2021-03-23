@@ -1,4 +1,4 @@
-# Aggregation pipelines
+# Materialized views
 
 Use demo database
 ```js
