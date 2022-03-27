@@ -21,13 +21,13 @@ db.gameStats.insertMany([
 ])
 ```
 
-Count entries
+Sum play time per user (SQL GROUP BY)
 ```js
 db.gameStats.aggregate( [
    {
      $group: {
-        _id: null,
-        count: { $sum: 1 }
+        _id: "$user_id",
+        totalMinsPlayed: { $sum: "$minsPlayed" }
      }
    }
 ] )
@@ -39,24 +39,25 @@ db.gameStats.aggregate( [
    {
      $group: {
         _id: null,
-        total: { $sum: "$minsPlayed" }
+        totalMinsPlayed: { $sum: "$minsPlayed" }
      }
    }
 ] )
 ```
 
-Sum play time per user (SQL GROUP BY)
+Count entries
 ```js
 db.gameStats.aggregate( [
    {
      $group: {
-        _id: "$user_id",
-        total: { $sum: "$minsPlayed" }
+        _id: null,
+        numberOfEntries: { $sum: 1 }
      }
    }
 ] )
-```
 
+
+```
 
 Sum play time per user and date
 ```js
@@ -105,6 +106,11 @@ db.gameStats.aggregate( [
 Sum play time per user and game
 ```js
 db.gameStats.aggregate( [
+   { $unwind: "$games" }
+] )
+
+
+db.gameStats.aggregate( [
    { $unwind: "$games" },
    {
      $group: {
@@ -139,9 +145,9 @@ db.gameStats.aggregate( [
 Simple JOIN
 ```js
 db.users.insertMany([
-	{ user_id: 10000, user_name: "john" },
-	{ user_id: 20000, user_name: "jane" },
-	{ user_id: 30000, user_name: "mary" },
+	{ _id: 10000, user_name: "john" },
+	{ _id: 20000, user_name: "jane" },
+	{ _id: 30000, user_name: "mary" },
 ])
 
 db.gameStats.aggregate( [
@@ -149,7 +155,7 @@ db.gameStats.aggregate( [
      $lookup: {
 	   from: "users",
 	   localField: "user_id",
-	   foreignField: "user_id",
+	   foreignField: "_id",
 	   as: "user"
 	 }
    }
@@ -169,7 +175,7 @@ db.gameStats.aggregate( [
      $lookup: {
 	   from: "users",
 	   localField: "_id",
-	   foreignField: "user_id",
+	   foreignField: "_id",
 	   as: "user"
 	 }
    },

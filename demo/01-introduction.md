@@ -1,5 +1,7 @@
 # Introduction to Mongo
 
+## First collection
+
 Check databases
 ```js
 show dbs
@@ -26,8 +28,23 @@ db.persons.insertMany([
 
 Check collection content
 ```js
+db.persons.findOne()
+
+db.persons.find({})
+
+db.persons.find({}).pretty()
+```
+
+## Primary key
+
+Explicit key
+```js
+db.persons.insertOne({ _id: 123, name: { first: "James", last: "Smith" }, birthDate: new Date("1974-06-10"), likes: ["food"] })
+
 db.persons.find({})
 ```
+
+## Queries
 
 Queries
 ```js

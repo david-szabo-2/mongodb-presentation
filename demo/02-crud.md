@@ -113,21 +113,6 @@ db.people.find({}, { "_id": 0, "name": 1, birthDate: 1 }).sort({ birthDate: -1 }
 db.people.find({}, { "_id": 0, "name": 1, birthDate: 1 }).sort({ birthDate: -1 }).skip(1).limit(3)
 ```
 
-Cursor
-```js
-var result = db.people.find({ likes: "sports" })
-
-result
-```
-
-```js
-var result = db.people.find({ likes: "sports" })
-
-while (result.hasNext()) {
-   printjson(result.next().name);
-}
-```
-
 ## Update operations
 
 
