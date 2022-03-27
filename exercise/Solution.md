@@ -45,6 +45,8 @@ db.postcodes.aggregate([
 ])
 ```
 
+## Bonus exercises
+
 Extend Graceland with a new field `country_postal` that contains the country code and the postal code concatenated with a dash (e.g. HU-1034).
 ```js
 db.postcodes.update(
@@ -55,8 +57,8 @@ db.postcodes.update(
 
 Which places (name) are within 20km around longitude -90.02604930000001 and latitude 35.0476912 (Graceland)? The result must be sorted in alphabetical order and each place appear in the result only once (distinct).
 ```js
-db.postcodes.find( {
-	"place.loc": { $geoWithin: { $centerSphere: [ [ -90.02604930000001, 35.0476912 ], 20/6378.1 ]}}
-}, { _id: 0, "place.name": 1}).sort("place.name": 1).distinct
+db.postcodes.distinct( "place.name",
+	{ "place.loc": { $geoWithin: { $centerSphere: [ [ -90.02604930000001, 35.0476912 ], 20/6378.1 ]}} }
+)
 ```
 
