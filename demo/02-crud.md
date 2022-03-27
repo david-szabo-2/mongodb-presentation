@@ -25,12 +25,18 @@ Check collection content
 ```js
 
 db.people.find({})
+```
 
+Query filters
+
+```js
 db.people.find({birthDate: ISODate("1988-10-10")})
 
 db.people.find({birthDate: { $lt: ISODate("1990-01-01")} })
 
 db.people.find({"name.last": "Doe", birthDate: { $lt: ISODate("1990-01-01")}})
+
+db.people.find( { $or: [ {"name.last": "Doe"}, {birthDate: { $lt: ISODate("1990-01-01") } } ] })
 ```
 
 Documents
@@ -105,21 +111,6 @@ db.people.find({}, { "_id": 0, "name": 1 }).sort({ "name.last": 1, "name.first":
 db.people.find({}, { "_id": 0, "name": 1, birthDate: 1 }).sort({ birthDate: -1 })
 
 db.people.find({}, { "_id": 0, "name": 1, birthDate: 1 }).sort({ birthDate: -1 }).skip(1).limit(3)
-```
-
-Cursor
-```js
-var result = db.people.find({ likes: "sports" })
-
-result
-```
-
-```js
-var result = db.people.find({ likes: "sports" })
-
-while (result.hasNext()) {
-   printjson(result.next().name);
-}
 ```
 
 ## Update operations
