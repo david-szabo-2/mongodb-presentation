@@ -28,6 +28,8 @@ db.postcodes.findOne({})
 
 * Top 5 countries by number of documents in descending order
 
+### Bonus Exercises
+
 * Extend Graceland with a new field `country_postal` that contains the country code and the postal code concatenated with a dash (e.g. HU-1034).
 *Hint: you can use an aggregation pipeline as the second argument of update methods*
 
