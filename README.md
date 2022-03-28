@@ -12,5 +12,5 @@ You need to enter password.
 Start client
 
 ```
-mongo
+mongosh
 ```
