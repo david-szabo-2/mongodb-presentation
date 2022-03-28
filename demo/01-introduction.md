@@ -31,8 +31,6 @@ Check collection content
 db.persons.findOne()
 
 db.persons.find({})
-
-db.persons.find({}).pretty()
 ```
 
 ## Primary key
