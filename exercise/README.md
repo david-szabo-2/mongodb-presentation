@@ -2,12 +2,21 @@
 
 ## Import test data
 
-Load data using mongoimport tool. Execute from commandline *not* mongo shell.
+Load the postcodes.json data using MongoDBCompass or mongoimport tool.
+
+### MongoDBCompass
+Create new database using the `+` sign next to `Databases`. Name the database `exercise` and the collection `postcodes`.
+Then on the newly created collection's tab click `ADD DATA` and `Import JSON or CSV file`.
+
+### mongoimport
+Execute from commandline *not* mongo shell.
 ```sh
 mongoimport -d exercise postcodes.json
 ```
 
-Start mongo shell and check that import was successful.
+### Check the data
+
+When finished using either method, start mongo shell and check that import was successful.
 ```js
 use exercise
 
