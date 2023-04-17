@@ -16,5 +16,5 @@ mongosh
 ```
 or (older versions)
 ```
-mongosh
+mongo
 ```
