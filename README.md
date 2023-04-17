@@ -14,3 +14,7 @@ Start client
 ```
 mongosh
 ```
+or (older versions)
+```
+mongosh
+```
